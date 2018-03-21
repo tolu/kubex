@@ -3,6 +3,8 @@ Interactive cli helper for kubectl
 
 > Tired of listing all alternatives just to be able to switch context or namespace - then this is for you
 
+You'll need to have [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed in path
+
 ## Install
 
 ```
