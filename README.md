@@ -3,6 +3,33 @@ Interactive cli helper for kubectl
 
 > Tired of listing all alternatives just to be able to switch context or namespace - then this is for you
 
+## Install
+
+```
+$ npm i -g kubex
+```
+
+## Usage
+
+```
+$ kubex -h
+
+  Usage: kubex [command] [options]
+  
+    Interactive <kubectl> helper
+  
+    Options:
+  
+      -V, --version     output the version number
+      -d, --debug       verbose output
+      -h, --help        output usage information
+  
+    Commands:
+  
+      set-context|ctx   select kubectl context
+      set-namespace|ns  select kubectl namespace
+```
+
 ## Dependencies
 
  - [commander](https://www.npmjs.com/package/commander) - solution for building node.js cli
