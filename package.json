@@ -1,0 +1,29 @@
+{
+  "name": "kubex",
+  "version": "0.0.1",
+  "description": "interactive cli helper tool for kubectl",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kubectl",
+    "kubernetes",
+    "nodejs",
+    "interactive"
+  ],
+  "author": "Tobias Lundin <tobias.lundin@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "clui": "^0.3.6",
+    "commander": "^2.15.1",
+    "inquirer": "^5.1.0"
+  },
+  "files": [
+    "index.js",
+    "kubectl.js"
+  ],
+  "bin": {
+    "kubex": "./index.js"
+  }
+}
