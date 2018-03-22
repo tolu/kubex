@@ -33,11 +33,12 @@ $ kubex -h
 ```
 
 ### What it looks like
-`$ kubex ctx`  
-![image](https://user-images.githubusercontent.com/658586/37714489-ef0a8a78-2d19-11e8-9f57-06c457bc8887.png)
+Notice that the current context/namespace is the default selected option
 
-`$ kubex ns`  
-![image](https://user-images.githubusercontent.com/658586/37714526-058211f4-2d1a-11e8-8bf8-16d493f053fc.png)
+![image](https://user-images.githubusercontent.com/658586/37755278-23fa7a78-2da5-11e8-9b35-d1c031ae105e.png)
+
+
+![image](https://user-images.githubusercontent.com/658586/37755299-3a1323be-2da5-11e8-8bd1-2e4f310f902c.png)
 
 ## Dependencies
 
