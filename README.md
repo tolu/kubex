@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/kubex.svg)](https://www.npmjs.com/package/kubex) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://tolu.mit-license.org/)
+
 # kubex
 Interactive cli helper for kubectl
 
