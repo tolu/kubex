@@ -21,8 +21,7 @@ const getContexts = () => {
       // [current, name, cluster, authInfo, namespace]
       const values = line.trim().replace(/(\*?\s)+/g, ',').split(',').filter(empty);
       if (idx > 0) {
-        // If line starts with '*', this is the current one - add to back of name
-        contexts.push(values[0]); // (/^\*/.test(line) ? ' (*)' : '')
+        contexts.push(values[0]);
       }
     });
     resolve(contexts);

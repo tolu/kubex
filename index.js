@@ -29,8 +29,9 @@ program
     prompt([{
       type: 'list',
       name: 'context',
-      message: `Select kubectl context (current: "${currentContext}")`,
-      choices: contexts
+      message: `Select kubectl context`,
+      choices: contexts,
+      default: currentContext
     }])
       .then(({context}) => {
         execFn(['config', 'use-context', context])
