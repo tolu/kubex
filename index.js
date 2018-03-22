@@ -65,8 +65,6 @@ program
     });
   });
 
-console.log(process.env);
-
 program.parse(process.argv);
 
 // Default to showing help
