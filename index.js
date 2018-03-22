@@ -3,14 +3,20 @@
 const program = require('commander');
 const {Spinner} = require('clui');
 const {prompt} = require('inquirer');
-const {getContexts, getNamespaces, execFn} = require('./kubectl');
+const {
+  getContexts,
+  getNamespaces,
+  execFn
+} = require('./kubectl');
+// @ts-ignore
+const version = require('./package.json').version;
 
 const spinner = new Spinner('...');
 
 program.name('kubex');
 
 program
-  .version('0.0.1')
+  .version(version, '-v, --version')
   .usage('[command] [options]')
   .option('-d, --debug', 'verbose output', false)
   .description('Interactive <kubectl> helper');
@@ -21,16 +27,14 @@ program
   .alias('ctx')
   .action(async () => {
     spinner.start();
-    const [contexts, currentContext] = await Promise.all([
-      getContexts(),
-      execFn(['config', 'current-context'])
-    ]);
+    const contexts = await getContexts();
     spinner.stop();
     prompt([{
       type: 'list',
       name: 'context',
-      message: `Select kubectl context (current: "${currentContext}")`,
-      choices: contexts
+      message: `Select kubectl context`,
+      choices: contexts.names,
+      default: contexts.current
     }])
       .then(({context}) => {
         execFn(['config', 'use-context', context])
@@ -43,17 +47,20 @@ program
   .description('select kubectl namespace')
   .alias('ns')
   .action(async () => {
-    const [namespaces, currentContext] = await Promise.all([
+    spinner.start();
+    const [namespaces, contexts] = await Promise.all([
       getNamespaces(),
-      execFn(['config', 'current-context'])
+      getContexts()
     ]);
+    spinner.stop();
     prompt([{
       type: 'list',
       name: 'namespace',
-      message: 'Select namespace',
-      choices: namespaces
+      message: `Select namespace for context: "${contexts.current}"`,
+      choices: namespaces,
+      default: contexts.namespace[contexts.names.indexOf(contexts.current)]
     }]).then(({namespace}) => {
-      execFn(['config', 'set-context', currentContext, `--namespace=${namespace}`])
+      execFn(['config', 'set-context', contexts.current, `--namespace=${namespace}`])
         .then(console.log);
     });
   });
