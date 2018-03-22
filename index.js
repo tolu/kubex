@@ -56,7 +56,7 @@ program
     prompt([{
       type: 'list',
       name: 'namespace',
-      message: 'Select namespace',
+      message: `Select namespace for context: "${contexts.current}"`,
       choices: namespaces,
       default: contexts.namespace[contexts.names.indexOf(contexts.current)]
     }]).then(({namespace}) => {
