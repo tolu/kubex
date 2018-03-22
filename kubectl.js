@@ -3,6 +3,22 @@ const {spawn} = require('child_process');
 /**
  * @returns {Promise<string[]>}
  */
+const getDeployments = async () => {
+  const stdout = await execFn(['get', 'deployments', '-o', 'json']);
+  // Parse output to array of contexts
+  return JSON.parse(stdout).items.map(i => ({
+    name: i.metadata.name,
+    value: {
+      name: i.metadata.name,
+      container: i.spec.template.spec.containers[0].name,
+      image: i.spec.template.spec.containers[0].image
+    },
+  }));
+};
+
+/**
+ * @returns {Promise<string[]>}
+ */
 const getNamespaces = async () => {
   const stdout = await execFn(['get', 'namespaces', '-o', 'json']);
   // Parse output to array of contexts
@@ -53,6 +69,23 @@ const getContexts = () => {
   });
 };
 
+const setImage = async (deployment, container, image, tag) => {
+  const result = await execFn(
+    ['set', 'image', `deployment/${deployment}`, `${container}=${image}:${tag}`]
+  );
+  console.log(result);
+}
+
+const setContext = async context => {
+  const result = await execFn(['config', 'use-context', context]);
+  console.log(result);
+}
+
+const setNamespace = async (context, namespace) => {
+  const result = await execFn(['config', 'set-context', context, `--namespace=${namespace}`]);
+  console.log(result);
+}
+
 function execFn(args) {
   let response = '';
   return new Promise((resolve, reject) => {
@@ -72,7 +105,10 @@ function empty(str) {
 
 module.exports = {
   getCurrentContext,
+  getDeployments,
   getNamespaces,
   getContexts,
-  execFn
+  setNamespace,
+  setContext,
+  setImage
 };
