@@ -1,4 +1,4 @@
-const {spawn} = require('child_process');
+const execa = require('execa');
 
 /**
  * @returns {Promise<string[]>}
@@ -12,7 +12,7 @@ const getDeployments = async () => {
       name: i.metadata.name,
       container: i.spec.template.spec.containers[0].name,
       image: i.spec.template.spec.containers[0].image
-    },
+    }
   }));
 };
 
@@ -74,29 +74,20 @@ const setImage = async (deployment, container, image, tag) => {
     ['set', 'image', `deployment/${deployment}`, `${container}=${image}:${tag}`]
   );
   console.log(result);
-}
+};
 
 const setContext = async context => {
   const result = await execFn(['config', 'use-context', context]);
   console.log(result);
-}
+};
 
 const setNamespace = async (context, namespace) => {
   const result = await execFn(['config', 'set-context', context, `--namespace=${namespace}`]);
   console.log(result);
-}
+};
 
 function execFn(args) {
-  let response = '';
-  return new Promise((resolve, reject) => {
-    // Console.log(`Spawn: "kubectl ${args.join(' ')}"`)
-    const p = spawn('kubectl', args);
-    p.stderr.on('data', reject);
-    p.stdout.on('data', data => {
-      response += data;
-    });
-    p.on('close', () => resolve(response.trim()));
-  });
+  return execa.stdout('kubectl', args);
 }
 
 function empty(str) {

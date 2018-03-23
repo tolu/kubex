@@ -17,11 +17,12 @@
   "dependencies": {
     "clui": "^0.3.6",
     "commander": "^2.15.1",
+    "execa": "^0.10.0",
     "inquirer": "^5.1.0"
   },
   "files": [
     "index.js",
-    "kubectl.js"
+    "lib/"
   ],
   "bin": {
     "kubex": "./index.js"

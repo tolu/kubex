@@ -43,8 +43,9 @@ Notice that the current context/namespace is the default selected option
 ## Dependencies
 
  - [commander](https://www.npmjs.com/package/commander) - solution for building node.js cli
- - [inquirer](https://www.npmjs.com/package/inquirer) - interactive cli lists
- - [clui](https://www.npmjs.com/package/clui) - cli spinner
+ - [inquirer](https://www.npmjs.com/package/inquirer) - interactive cli prompts
+ - [clui](https://www.npmjs.com/package/clui) - cli spinner etc.
+ - [execa](https://www.npmjs.com/package/execa) - a better `child_process`
 
 ## Inspiration
 
