@@ -20,6 +20,9 @@
     "execa": "^0.10.0",
     "inquirer": "^5.1.0"
   },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "files": [
     "index.js",
     "lib/"

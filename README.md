@@ -20,22 +20,23 @@ $ kubex -h
 
   Usage: kubex [command] [options]
 
-    Interactive <kubectl> helper
+  Interactive <kubectl> helper
 
-    Options:
+  Options:
 
-      -V, --version     output the version number
-      -d, --debug       verbose output
-      -h, --help        output usage information
+    -v, --version     output the version number
+    -h, --help        output usage information
 
-    Commands:
+  Commands:
 
-      set-context|ctx   select kubectl context
-      set-namespace|ns  select kubectl namespace
+    set-context|ctx   select kubectl context
+    set-namespace|ns  select kubectl namespace
+    set-image|si      set image for deployment
+    interactive|i     Choose command from list
 ```
 
 ### What it looks like
-Notice that the current context/namespace is the default selected option
+Notice that when selecting context/namespace, the current one is the default selected option
 
 ![select subscription](./gifs/kubex-example.gif)
 
