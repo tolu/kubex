@@ -31,7 +31,7 @@
     "kubex": "./index.js"
   },
   "devDependencies": {
-    "xo": "^0.20.3"
+    "xo": "^0.54.1"
   },
   "xo": {
     "semicolon": true,
