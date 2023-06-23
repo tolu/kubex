@@ -17,7 +17,7 @@
   "dependencies": {
     "clui": "^0.3.6",
     "commander": "^2.15.1",
-    "execa": "^0.10.0",
+    "execa": "^7.1.1",
     "inquirer": "^5.1.0"
   },
   "engines": {
@@ -31,7 +31,7 @@
     "kubex": "./index.js"
   },
   "devDependencies": {
-    "xo": "^0.20.3"
+    "xo": "^0.54.2"
   },
   "xo": {
     "semicolon": true,
